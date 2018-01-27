@@ -1,6 +1,8 @@
 var inquirer = require("inquirer");
 var fs = require("fs");
 
+var cardData = require('./clozeCards.json');
+
 function ClozeCard(fullText, answer) {
 	var clozePositions = clozeDelete(fullText, answer);
 
@@ -20,6 +22,10 @@ function ClozeCard(fullText, answer) {
 		var end = fullText.slice(clozePositions[1],fullText.length);
 		return start+" ... "+end;
 	}
+}
+
+ClozeCard.prototype.displayCard = function displayCard(){
+	console.log(this.partial.replace("...", this.answer));
 }
 
 module.exports = ClozeCard;

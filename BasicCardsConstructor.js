@@ -21,14 +21,15 @@ function createNewCard() {
     }]).then(function(inputs) {
         var card = new clozeCard(inputs.fullText,inputs.answer);
         console.log(card);
+        card.displayCard();
 
-        // cardData.push(card);
+        cardData.push(card);
 
-        // var newCardData = JSON.stringify(cardData, null, '/t');
-        // fs.writeFile('./basicCards.json', newCardData, function(err) {
-        //     if (err) throw err;
-        //     console.log("Done!");
-        // })
+        var newCardData = JSON.stringify(cardData, null, '/t');
+        fs.writeFile('./basicCards.json', newCardData, function(err) {
+            if (err) throw err;
+            console.log("Done!");
+        })
     })
 }
 
